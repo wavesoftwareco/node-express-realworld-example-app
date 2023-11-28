@@ -125,6 +125,7 @@ router.post('/:article/comments', auth.required, function(req, res, next) {
     }
 
     var comment = new Comment(req.body.comment);
+    // NOTE: I suspect mongoose-unique-validation is failing because req.article has a parent document - worth keeping an eye on
     comment.article = req.article;
     comment.author = user;
 
